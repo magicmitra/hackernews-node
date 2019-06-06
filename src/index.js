@@ -11,7 +11,7 @@ const typeDefs = `
 // Notice how its structure is identical to the Query
 const resolvers = {
     Query: {
-        info: () => `This is the API of a Hackernews Clone`
+        info: () => `This is the API of a hackernews clone`,
     }
 };
 
