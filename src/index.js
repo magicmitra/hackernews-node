@@ -3,7 +3,9 @@ const { GraphQLServer } = require('graphql-yoga');
 // 1 This will define the GraphQL schema
 const typeDefs = `
     type Query {
-        info: String!
+        info: String!,
+        message: String!,
+        num: Int!,
     }
 `;
 
@@ -12,6 +14,8 @@ const typeDefs = `
 const resolvers = {
     Query: {
         info: () => `This is the API of a hackernews clone`,
+        message: () => 'OG',
+        num: () => 4,
     }
 };
 
