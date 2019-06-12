@@ -30,6 +30,13 @@ const resolvers = {
         // schema definition.
         info: () => `This is the API of a hackernews clone`,
         feed: () => links,
+    },
+
+    // resolvers for the Link type from schema definition
+    Link: {
+        id: (parent) => parent.id,
+        description: (parent) => parent.description,
+        url: (parent) => parent.url,
     }
 };
 
