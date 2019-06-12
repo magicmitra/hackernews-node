@@ -21,11 +21,25 @@ let idCount = links.length
 // The actual implementation of the GraphQL schema. 
 // Notice how its structure is identical to the Query
 const resolvers = {
+    // resolvers always have to be named after the corresponding
+    // schema definition.
     Query: {
-        // resolver always have to be named after the corresponding
-        // schema definition.
         info: () => `This is the API of a hackernews clone`,
         feed: () => links,
+    },
+
+    Mutation: {
+        // post resolver first creates a new link object, then adds 
+        // it to the existing links and returns the new link.
+        post: (parent, args) => {
+            const link = {
+                id: `link-${idCount++}`,
+                description: args.description,
+                url: args.urlm
+            }
+            links.push(link)
+            return link
+        }
     },
 
     // resolvers for the Link type from schema definition
