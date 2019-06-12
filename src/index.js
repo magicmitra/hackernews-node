@@ -14,6 +14,10 @@ let links = [
     },
 ];
 
+// an int variable that serves as a way to generate unique 
+// IDs for newly created Link elements
+let idCount = links.length
+
 // The actual implementation of the GraphQL schema. 
 // Notice how its structure is identical to the Query
 const resolvers = {
