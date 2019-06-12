@@ -1,13 +1,21 @@
 const { GraphQLServer } = require('graphql-yoga');
 
 // dummy data, stored in memory for now, be stored to DB later
-let links = [{
+let links = [
+    {
     id: 'link-0',
     url: 'www.howtographql.com',
     description: 'Fullstack tutorial for GraphQL',
-}]
+    },
+    {
+        id: 'link-1',
+        url: 'www.redtube.com',
+        description: 'Nude tutorial for whatever',
+    },
+]
 
 // This will define the GraphQL schema
+// Schema Definition!
 const typeDefs = `
     type Query {
         info: String!,
