@@ -1,25 +1,36 @@
 const { GraphQLServer } = require('graphql-yoga');
 
-// 1 This will define the GraphQL schema
+// dummy data, stored in memory for now, be stored to DB later
+let links = [{
+    id: 'link-0',
+    url: 'www.howtographql.com',
+    description: 'Fullstack tutorial for GraphQL',
+}]
+
+// This will define the GraphQL schema
 const typeDefs = `
     type Query {
         info: String!,
-        message: String!,
-        num: Int!,
+        feed: [Link!]!,
+    }
+
+    type Link {
+        id: ID!
+        description: String!
+        url: String!
     }
 `;
 
-// 2 The actual implementation of the GraphQL schema. 
+
+// The actual implementation of the GraphQL schema. 
 // Notice how its structure is identical to the Query
 const resolvers = {
     Query: {
         info: () => `This is the API of a hackernews clone`,
-        message: () => 'OG',
-        num: () => 4,
     }
 };
 
-// 3 Schema and resolvers are bundled and passed into
+// Schema and resolvers are bundled and passed into
 // The GraphQLServer. This tells the server what API
 // operations are accepted and how they should be resolved. 
 const server = new GraphQLServer({
