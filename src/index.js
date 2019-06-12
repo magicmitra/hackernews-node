@@ -12,27 +12,7 @@ let links = [
         url: 'www.redtube.com',
         description: 'Nude tutorial for whatever',
     },
-]
-
-// This will define the GraphQL schema
-// Schema Definition!
-const typeDefs = `
-    type Query {
-        info: String!,
-        feed: [Link!]!,
-    }
-
-    type Mutation {
-        post(url: String!, description: String!): Link!
-    }
-
-    type Link {
-        id: ID!
-        description: String!
-        url: String!
-    }
-`;
-
+];
 
 // The actual implementation of the GraphQL schema. 
 // Notice how its structure is identical to the Query
@@ -56,7 +36,7 @@ const resolvers = {
 // The GraphQLServer. This tells the server what API
 // operations are accepted and how they should be resolved. 
 const server = new GraphQLServer({
-    typeDefs,
+    typeDefs: './src/schema.graphql',
     resolvers,
 });
 
