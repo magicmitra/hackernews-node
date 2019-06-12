@@ -35,7 +35,7 @@ const resolvers = {
             const link = {
                 id: `link-${idCount++}`,
                 description: args.description,
-                url: args.urlm
+                url: args.url
             }
             links.push(link)
             return link
