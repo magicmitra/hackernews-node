@@ -26,7 +26,10 @@ const typeDefs = `
 // Notice how its structure is identical to the Query
 const resolvers = {
     Query: {
+        // resolver always have to be named after the corresponding
+        // schema definition.
         info: () => `This is the API of a hackernews clone`,
+        feed: () => links,
     }
 };
 
