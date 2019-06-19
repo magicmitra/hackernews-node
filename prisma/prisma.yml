@@ -1,5 +1,6 @@
 # The HTTP endpoint for Prisma API
-endpoint: ''
+#endpoint: ''endpoint: https://us1.prisma.sh/erv-df0a59/clusterfun/dev
+
 
 # Points to the file that contains datamodel
 datamodel: datamodel.prisma
