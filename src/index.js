@@ -2,6 +2,13 @@ const { GraphQLServer } = require('graphql-yoga');
 // npm add prisma-client-lib
 const { prisma } = require('./generated/prisma-client');
 
+/**
+ * NOTE: After every change in the datamodel file, the
+ * 1. Prisma API needs to be redeployed -> 'prisma deploy' on root dir.
+ * 2. Update auto-generated Prisma client to expose CRUD methods for 
+ * the newly added model - 'prisma generate' on root dir.
+ */
+
 // The actual implementation of the GraphQL schema. 
 // Notice how its structure is identical to the Query
 const resolvers = {
