@@ -1,7 +1,7 @@
 const { GraphQLServer } = require('graphql-yoga');
 // npm add prisma-client-lib
 const { prisma } = require('./generated/prisma-client');
-const Quert = require('./resolvers/Query');
+const Query = require('./resolvers/Query');
 const Mutation = require('./resolvers/Mutation');
 const Link = require('./resolvers/Link');
 const User = require('./resolvers/User');
@@ -13,35 +13,14 @@ const User = require('./resolvers/User');
  * the newly added model - 'prisma generate' on root dir.
  */
 
-// The actual implementation of the GraphQL schema. 
-// Notice how its structure is identical to the Query
+
 const resolvers = {
     // resolvers always have to be named after the corresponding
     // schema definition.
-    Query: {
-        info: () => `This is the API of a hackernews clone`,
-        feed: (root, args, context, info) => {
-            return context.prisma.links()
-        },
-    },
-
-    Mutation: {
-        // post resolver first creates a new link object, then adds 
-        // it to the existing links and returns the new link.
-        post: (root, args, context) => {
-            return context.prisma.createLink({
-                url: args.url,
-                description: args.description,
-            })
-        },
-    },
-
-    // resolvers for the Link type from schema definition
-    Link: {
-        id: (parent) => parent.id,
-        description: (parent) => parent.description,
-        url: (parent) => parent.url,
-    }
+    Query,
+    Mutation,
+    Link,
+    User,
 };
 
 // Schema and resolvers are bundled and passed into
