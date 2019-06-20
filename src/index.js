@@ -1,6 +1,10 @@
 const { GraphQLServer } = require('graphql-yoga');
 // npm add prisma-client-lib
 const { prisma } = require('./generated/prisma-client');
+const Quert = require('./resolvers/Query');
+const Mutation = require('./resolvers/Mutation');
+const Link = require('./resolvers/Link');
+const User = require('./resolvers/User');
 
 /**
  * NOTE: After every change in the datamodel file, the
