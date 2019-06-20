@@ -53,7 +53,7 @@ function post(parent, args, context, info) {
 }
 
 module.exports = {
-    module,
+    login,
     signup,
     post,
 }
