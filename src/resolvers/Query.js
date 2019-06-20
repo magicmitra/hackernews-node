@@ -1,4 +1,4 @@
-function feed(root, args, context, info)  {
+function feed(parent, args, context, info)  {
     return context.prisma.links()
 }
 
