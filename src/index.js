@@ -20,6 +20,7 @@ const resolvers = {
     // schema definition.
     Query,
     Mutation,
+    Subscription,
     Link,
     User,
 };
