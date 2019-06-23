@@ -43,6 +43,34 @@ async function login(parent, args, context, info) {
     }
 }
 
+async function vote(parent, args, context, info) {
+    // Validate the incoming JWT 
+    const userId = getUserId(context);
+
+    /**
+     * The prisma client generates one $exists function per model.
+     * $exists takes a 'where' filter object that allows to specify
+     * certain conditions about elements of that type. Only if the 
+     * condition applies to at least one element in the database, the 
+     * $exists function returns true.
+     */
+    const linkExists = await context.prisma.$exists.vote({
+        user: { id: userId },
+        link: { id: args.linkId },
+    })
+    if(linkExists) {
+        throw new Error(`Already voted for link: ${args.linkId}`);
+    }
+
+    // If $exists returns false, the 'createVote' method will be 
+    // used to create a new Vote thats connected to the User
+    // and Link.
+    return context.prisma.createVote({
+        user: { connect: { id: userId } },
+        link: { connect: { id: args.linkId } },
+    });
+}
+
 function post(parent, args, context, info) {
     const userId = getUserId(context);
     return context.prisma.createLink({
@@ -52,8 +80,11 @@ function post(parent, args, context, info) {
     });
 }
 
+
+
 module.exports = {
     login,
     signup,
+    vote,
     post,
 }

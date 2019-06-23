@@ -5,6 +5,7 @@ const Query = require('./resolvers/Query');
 const Mutation = require('./resolvers/Mutation');
 const Link = require('./resolvers/Link');
 const User = require('./resolvers/User');
+const Vote = require('./resolvers/Vote');
 const Subscription = require('./resolvers/Subscription');
 
 /**
@@ -23,6 +24,7 @@ const resolvers = {
     Subscription,
     Link,
     User,
+    Vote,
 };
 
 // Schema and resolvers are bundled and passed into
