@@ -18,6 +18,6 @@ type User {
 
 type Vote {
         id: ID! @id
-        link: link!
+        link: Link!
         user: User!
 }
