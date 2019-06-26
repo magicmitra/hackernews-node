@@ -30,6 +30,7 @@ const resolvers = {
 // Schema and resolvers are bundled and passed into
 // The GraphQLServer. This tells the server what API
 // operations are accepted and how they should be resolved. 
+// 
 const server = new GraphQLServer({
     typeDefs: './src/schema.graphql',
     resolvers,
